@@ -1,0 +1,26 @@
+{
+  "wheel": "gtm_outreach_kit-0.1.0-py3-none-any.whl",
+  "outside_checkout": true,
+  "fresh_environment": true,
+  "commands": [
+    "version",
+    "help",
+    "init",
+    "validate",
+    "prepare",
+    "report",
+    "demo"
+  ],
+  "runtime_dependencies": 0,
+  "reproducible": true,
+  "summary": {
+    "input_rows": 100,
+    "unique_records": 90,
+    "duplicate_rows": 10,
+    "qualified": 31,
+    "review": 32,
+    "excluded": 27,
+    "suppressed": 2,
+    "drafts": 24
+  }
+}

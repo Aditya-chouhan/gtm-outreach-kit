@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "prospect-row",
+  "type": "object",
+  "properties": {
+    "contact_id": {
+      "type": "string"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "industry": {
+      "type": "string"
+    },
+    "employees": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "source_ref": {
+      "type": "string"
+    },
+    "observed_at": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": {
+    "type": "string"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "suppression-row",
+  "type": "object",
+  "properties": {
+    "type": {
+      "enum": [
+        "email",
+        "contact_id",
+        "domain"
+      ]
+    },
+    "value": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "type",
+    "value",
+    "reason"
+  ],
+  "additionalProperties": true
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review an outreach pack"
+  short_description: "Review an outreach pack with GTM Outreach Kit"
+  default_prompt: "Use $gtm-review to review an outreach pack from my selected local inputs."

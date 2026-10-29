@@ -1,0 +1,3 @@
+type,value,reason
+contact_id,p001,Synthetic opt-out
+domain,company021.test,Synthetic company exclusion

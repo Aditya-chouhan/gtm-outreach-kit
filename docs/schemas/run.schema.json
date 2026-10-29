@@ -1,0 +1,1472 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "run",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "engine_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "as_of": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "input_sha256": {
+      "type": "object",
+      "properties": {
+        "prospects": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "brief": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "signals": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "suppressions": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "prospects",
+        "brief",
+        "signals",
+        "suppressions"
+      ],
+      "additionalProperties": false
+    },
+    "configuration": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "offer": {
+          "type": "object",
+          "properties": {
+            "summary": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proof_points": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        },
+        "sender": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "company": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        },
+        "required": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]*$"
+              },
+              "field": {
+                "enum": [
+                  "contact_id",
+                  "first_name",
+                  "email",
+                  "company",
+                  "domain",
+                  "industry",
+                  "employees",
+                  "country",
+                  "role"
+                ]
+              },
+              "op": {
+                "enum": [
+                  "equals",
+                  "in",
+                  "range"
+                ]
+              },
+              "value": {}
+            },
+            "required": [
+              "id",
+              "field",
+              "op",
+              "value"
+            ],
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "field": {
+                      "const": "employees"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "oneOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        {
+                          "type": "array",
+                          "minItems": 1,
+                          "items": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "value": {
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        {
+                          "type": "array",
+                          "minItems": 1,
+                          "items": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "op": {
+                      "const": "range"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "field": {
+                      "const": "employees"
+                    },
+                    "value": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 2,
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "op": {
+                      "const": "in"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "minItems": 1
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "op": {
+                      "const": "equals"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "type": [
+                        "string",
+                        "integer"
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "preferences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]*$"
+              },
+              "field": {
+                "enum": [
+                  "contact_id",
+                  "first_name",
+                  "email",
+                  "company",
+                  "domain",
+                  "industry",
+                  "employees",
+                  "country",
+                  "role"
+                ]
+              },
+              "op": {
+                "enum": [
+                  "equals",
+                  "in",
+                  "range"
+                ]
+              },
+              "value": {}
+            },
+            "required": [
+              "id",
+              "field",
+              "op",
+              "value"
+            ],
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "field": {
+                      "const": "employees"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "oneOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        {
+                          "type": "array",
+                          "minItems": 1,
+                          "items": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "value": {
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        {
+                          "type": "array",
+                          "minItems": 1,
+                          "items": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "op": {
+                      "const": "range"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "field": {
+                      "const": "employees"
+                    },
+                    "value": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 2,
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "op": {
+                      "const": "in"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "minItems": 1
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "op": {
+                      "const": "equals"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "type": [
+                        "string",
+                        "integer"
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "exclusions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]*$"
+              },
+              "field": {
+                "enum": [
+                  "contact_id",
+                  "first_name",
+                  "email",
+                  "company",
+                  "domain",
+                  "industry",
+                  "employees",
+                  "country",
+                  "role"
+                ]
+              },
+              "op": {
+                "enum": [
+                  "equals",
+                  "in",
+                  "range"
+                ]
+              },
+              "value": {}
+            },
+            "required": [
+              "id",
+              "field",
+              "op",
+              "value"
+            ],
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "field": {
+                      "const": "employees"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "oneOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        {
+                          "type": "array",
+                          "minItems": 1,
+                          "items": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                "else": {
+                  "properties": {
+                    "value": {
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        {
+                          "type": "array",
+                          "minItems": 1,
+                          "items": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "op": {
+                      "const": "range"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "field": {
+                      "const": "employees"
+                    },
+                    "value": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 2,
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "op": {
+                      "const": "in"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "minItems": 1
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "op": {
+                      "const": "equals"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "type": [
+                        "string",
+                        "integer"
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "column_map": {
+          "type": "object",
+          "properties": {
+            "contact_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "first_name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "email": {
+              "type": "string",
+              "minLength": 1
+            },
+            "company": {
+              "type": "string",
+              "minLength": 1
+            },
+            "domain": {
+              "type": "string",
+              "minLength": 1
+            },
+            "industry": {
+              "type": "string",
+              "minLength": 1
+            },
+            "employees": {
+              "type": "string",
+              "minLength": 1
+            },
+            "country": {
+              "type": "string",
+              "minLength": 1
+            },
+            "role": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "observed_at": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        },
+        "signal_types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "signal_max_age_days": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "evidence_max_age_days": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "templates": {
+          "type": "object",
+          "properties": {
+            "subject": {
+              "type": "string",
+              "minLength": 1
+            },
+            "first": {
+              "type": "string",
+              "minLength": 1
+            },
+            "follow_up": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "schema_version",
+        "name",
+        "required"
+      ],
+      "additionalProperties": false
+    },
+    "disclosures": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "input_rows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unique_records": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "duplicate_rows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "qualified": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "review": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excluded": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "suppressed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "drafts": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "input_rows",
+        "unique_records",
+        "duplicate_rows",
+        "qualified",
+        "review",
+        "excluded",
+        "suppressed",
+        "drafts"
+      ],
+      "additionalProperties": false
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "values": {
+            "type": "object",
+            "properties": {
+              "contact_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "first_name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "email": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "company": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "domain": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "industry": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "employees": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "country": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "role": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "source_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "observed_at": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "contact_id",
+              "first_name",
+              "email",
+              "company",
+              "domain",
+              "industry",
+              "employees",
+              "country",
+              "role",
+              "source_ref",
+              "observed_at"
+            ],
+            "additionalProperties": false
+          },
+          "source_rows": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "row_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "raw": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "values": {
+                  "type": "object",
+                  "properties": {
+                    "contact_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "first_name": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "email": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "company": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "domain": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "industry": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "employees": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0
+                    },
+                    "country": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "role": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "source_ref": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "observed_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "contact_id",
+                    "first_name",
+                    "email",
+                    "company",
+                    "domain",
+                    "industry",
+                    "employees",
+                    "country",
+                    "role",
+                    "source_ref",
+                    "observed_at"
+                  ],
+                  "additionalProperties": false
+                },
+                "problems": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "row_id",
+                "raw",
+                "values",
+                "problems"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "identities": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "contact_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "domain": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "email",
+              "contact_id",
+              "domain"
+            ],
+            "additionalProperties": false
+          },
+          "conflicts": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array"
+            }
+          },
+          "problems": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "qualification": {
+            "type": "object",
+            "properties": {
+              "required": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "rule_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "field": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "op": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "expected": {},
+                    "result": {
+                      "enum": [
+                        "match",
+                        "no_match",
+                        "unknown"
+                      ]
+                    },
+                    "evidence": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "row_id": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "source_ref": {
+                            "type": "string"
+                          },
+                          "observed_at": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": [
+                              "string",
+                              "integer",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "row_id",
+                          "source_ref",
+                          "observed_at",
+                          "value"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "unusable_evidence": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "row_id": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "source_ref": {
+                            "type": "string"
+                          },
+                          "observed_at": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": [
+                              "string",
+                              "integer",
+                              "null"
+                            ]
+                          },
+                          "reason": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        },
+                        "required": [
+                          "row_id",
+                          "source_ref",
+                          "observed_at",
+                          "value",
+                          "reason"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "rule_id",
+                    "field",
+                    "op",
+                    "expected",
+                    "result",
+                    "evidence",
+                    "unusable_evidence"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "preferences": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "rule_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "field": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "op": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "expected": {},
+                    "result": {
+                      "enum": [
+                        "match",
+                        "no_match",
+                        "unknown"
+                      ]
+                    },
+                    "evidence": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "row_id": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "source_ref": {
+                            "type": "string"
+                          },
+                          "observed_at": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": [
+                              "string",
+                              "integer",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "row_id",
+                          "source_ref",
+                          "observed_at",
+                          "value"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "unusable_evidence": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "row_id": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "source_ref": {
+                            "type": "string"
+                          },
+                          "observed_at": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": [
+                              "string",
+                              "integer",
+                              "null"
+                            ]
+                          },
+                          "reason": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        },
+                        "required": [
+                          "row_id",
+                          "source_ref",
+                          "observed_at",
+                          "value",
+                          "reason"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "rule_id",
+                    "field",
+                    "op",
+                    "expected",
+                    "result",
+                    "evidence",
+                    "unusable_evidence"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "exclusions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "rule_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "field": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "op": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "expected": {},
+                    "result": {
+                      "enum": [
+                        "match",
+                        "no_match",
+                        "unknown"
+                      ]
+                    },
+                    "evidence": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "row_id": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "source_ref": {
+                            "type": "string"
+                          },
+                          "observed_at": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": [
+                              "string",
+                              "integer",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "row_id",
+                          "source_ref",
+                          "observed_at",
+                          "value"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "unusable_evidence": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "row_id": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "source_ref": {
+                            "type": "string"
+                          },
+                          "observed_at": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": [
+                              "string",
+                              "integer",
+                              "null"
+                            ]
+                          },
+                          "reason": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        },
+                        "required": [
+                          "row_id",
+                          "source_ref",
+                          "observed_at",
+                          "value",
+                          "reason"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "rule_id",
+                    "field",
+                    "op",
+                    "expected",
+                    "result",
+                    "evidence",
+                    "unusable_evidence"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "required",
+              "preferences",
+              "exclusions"
+            ],
+            "additionalProperties": false
+          },
+          "fit_status": {
+            "enum": [
+              "qualified",
+              "review",
+              "excluded"
+            ]
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "suppression_matches": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "contact_status": {
+            "enum": [
+              "suppressed",
+              "missing_email",
+              "syntax_only",
+              "invalid_email"
+            ]
+          },
+          "signals": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "signal_id",
+                "priority_status",
+                "age_days"
+              ]
+            }
+          },
+          "priority": {
+            "type": "object",
+            "properties": {
+              "preference_matches": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "fresh_signal_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "latest_signal": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "rank": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 1
+              }
+            },
+            "required": [
+              "preference_matches",
+              "fresh_signal_count",
+              "latest_signal",
+              "rank"
+            ],
+            "additionalProperties": false
+          },
+          "draft_blockers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "values",
+          "source_rows",
+          "identities",
+          "conflicts",
+          "problems",
+          "qualification",
+          "fit_status",
+          "reasons",
+          "suppression_matches",
+          "contact_status",
+          "signals",
+          "priority",
+          "draft_blockers"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "drafts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "record_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "email": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "const": "draft_for_review"
+          },
+          "subject": {
+            "type": "string",
+            "minLength": 1
+          },
+          "first": {
+            "type": "string",
+            "minLength": 1
+          },
+          "follow_up": {
+            "type": "string",
+            "minLength": 1
+          },
+          "claim_sources": {
+            "type": "object",
+            "properties": {
+              "prospect": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "offer": {
+                "type": "string",
+                "minLength": 1
+              },
+              "proof": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "prospect",
+              "offer",
+              "proof"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "record_id",
+          "email",
+          "status",
+          "subject",
+          "first",
+          "follow_up",
+          "claim_sources"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "engine_version",
+    "name",
+    "as_of",
+    "input_sha256",
+    "configuration",
+    "disclosures",
+    "summary",
+    "records",
+    "drafts"
+  ],
+  "additionalProperties": false
+}

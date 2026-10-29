@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prepare outreach drafts"
+  short_description: "Prepare outreach drafts with GTM Outreach Kit"
+  default_prompt: "Use $gtm-draft to prepare outreach drafts from my selected local inputs."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Inspect prospect data"
+  short_description: "Inspect prospect data with GTM Outreach Kit"
+  default_prompt: "Use $gtm-data-inspect to inspect prospect data from my selected local inputs."

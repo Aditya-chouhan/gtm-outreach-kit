@@ -1,0 +1,101 @@
+contact_id,first_name,email,company,domain,industry,employees,country,role,source_ref,observed_at
+p001,Person 001,person001@company001.test,Example Software 001,company001.test,software,21,US,Head of Revenue,synthetic://prospects/001,2026-10-20
+p002,Person 002,person002@company002.test,Example Software 002,company002.test,software,,GB,Head of Revenue,synthetic://prospects/002,2026-10-20
+p003,Person 003,person003@company003.test,Example Software 003,company003.test,software,400,US,Operations Manager,synthetic://prospects/003,2026-10-20
+p004,Person 004,person004@company004.test,Example Software 004,company004.test,software,24,,Head of Revenue,synthetic://prospects/004,2026-10-20
+p005,Person 005,person005@company005.test,Example Software 005,company005.test,software,25,IN,Head of Revenue,synthetic://prospects/005,2026-10-20
+p006,Person 006,person006@company006.test,Example Software 006,company006.test,software,26,GB,Investor,synthetic://prospects/006,2026-10-20
+p007,Person 007,person007@company007.test,Example Software 007,company007.test,software,27,US,Head of Revenue,synthetic://prospects/007,2024-01-01
+p008,Person 008,person008@company008.test,Example Software 008,company008.test,software,28,GB,Head of Revenue,synthetic://prospects/008,2026-10-20
+p009,Person 009,,Example Software 009,company009.test,software,29,US,Operations Manager,synthetic://prospects/009,2026-10-20
+p010,Person 010,person010@company010.test,Example Software 010,company010.test,software,30,GB,Head of Revenue,synthetic://prospects/010,2026-10-20
+p011,Person 011,person011@company011.test,Example Software 011,company011.test,software,31,US,Head of Revenue,synthetic://prospects/011,2026-10-20
+p012,Person 012,person012@company012.test,Example Software 012,company012.test,software,,GB,Operations Manager,synthetic://prospects/012,2026-10-20
+p013,Person 013,person013@company013.test,Example Software 013,company013.test,software,400,US,Head of Revenue,synthetic://prospects/013,2026-10-20
+p014,Person 014,person014@company014.test,Example Software 014,company014.test,software,34,,Head of Revenue,synthetic://prospects/014,2026-10-20
+p015,Person 015,person015@company015.test,Example Software 015,company015.test,software,35,IN,Operations Manager,synthetic://prospects/015,2026-10-20
+p016,Person 016,person016@company016.test,Example Software 016,company016.test,software,36,GB,Investor,synthetic://prospects/016,2026-10-20
+p017,Person 017,person017@company017.test,Example Software 017,company017.test,software,37,US,Head of Revenue,synthetic://prospects/017,2024-01-01
+p018,Person 018,person018@company018.test,Example Software 018,company018.test,software,38,GB,Operations Manager,synthetic://prospects/018,2026-10-20
+p019,Person 019,invalid-address,Example Software 019,company019.test,software,39,US,Head of Revenue,synthetic://prospects/019,2026-10-20
+p020,Person 020,person020@company020.test,Example Software 020,company020.test,software,40,GB,Head of Revenue,synthetic://prospects/020,2026-10-20
+p021,Person 021,person021@company021.test,Example Software 021,company021.test,software,41,US,Operations Manager,synthetic://prospects/021,2026-10-20
+p022,Person 022,person022@company022.test,Example Software 022,company022.test,software,,GB,Head of Revenue,synthetic://prospects/022,2026-10-20
+p023,Person 023,person023@company023.test,Example Software 023,company023.test,software,400,US,Head of Revenue,synthetic://prospects/023,2026-10-20
+p024,Person 024,person024@company024.test,Example Software 024,company024.test,software,44,,Operations Manager,synthetic://prospects/024,2026-10-20
+p025,Person 025,person025@company025.test,Example Software 025,company025.test,software,45,IN,Head of Revenue,synthetic://prospects/025,2026-10-20
+p026,Person 026,person026@company026.test,Example Software 026,company026.test,software,46,GB,Investor,synthetic://prospects/026,2026-10-20
+p027,Person 027,person027@company027.test,Example Software 027,company027.test,software,47,US,Operations Manager,synthetic://prospects/027,2024-01-01
+p028,Person 028,person028@company028.test,Example Software 028,company028.test,software,48,GB,Head of Revenue,synthetic://prospects/028,2026-10-20
+p029,Person 029,,Example Software 029,company029.test,software,49,US,Head of Revenue,synthetic://prospects/029,2026-10-20
+p030,Person 030,person030@company030.test,Example Software 030,company030.test,software,50,GB,Operations Manager,synthetic://prospects/030,2026-10-20
+p031,Person 031,person031@company031.test,Example Software 031,company031.test,software,51,US,Head of Revenue,synthetic://prospects/031,2026-10-20
+p032,Person 032,person032@company032.test,Example Software 032,company032.test,software,,GB,Head of Revenue,synthetic://prospects/032,2026-10-20
+p033,Person 033,person033@company033.test,Example Software 033,company033.test,software,400,US,Operations Manager,synthetic://prospects/033,2026-10-20
+p034,Person 034,person034@company034.test,Example Software 034,company034.test,software,54,,Head of Revenue,synthetic://prospects/034,2026-10-20
+p035,Person 035,person035@company035.test,Example Software 035,company035.test,software,55,IN,Head of Revenue,synthetic://prospects/035,2026-10-20
+p036,Person 036,person036@company036.test,Example Software 036,company036.test,software,56,GB,Investor,synthetic://prospects/036,2026-10-20
+p037,Person 037,person037@company037.test,Example Software 037,company037.test,software,57,US,Head of Revenue,synthetic://prospects/037,2024-01-01
+p038,Person 038,person038@company038.test,Example Software 038,company038.test,software,58,GB,Head of Revenue,synthetic://prospects/038,2026-10-20
+p039,Person 039,invalid-address,Example Software 039,company039.test,software,59,US,Operations Manager,synthetic://prospects/039,2026-10-20
+p040,Person 040,person040@company040.test,Example Software 040,company040.test,software,60,GB,Head of Revenue,synthetic://prospects/040,2026-10-20
+p041,Person 041,person041@company041.test,Example Software 041,company041.test,software,61,US,Head of Revenue,synthetic://prospects/041,2026-10-20
+p042,Person 042,person042@company042.test,Example Software 042,company042.test,software,,GB,Operations Manager,synthetic://prospects/042,2026-10-20
+p043,Person 043,person043@company043.test,Example Software 043,company043.test,software,400,US,Head of Revenue,synthetic://prospects/043,2026-10-20
+p044,Person 044,person044@company044.test,Example Software 044,company044.test,software,64,,Head of Revenue,synthetic://prospects/044,2026-10-20
+p045,Person 045,person045@company045.test,Example Software 045,company045.test,software,65,IN,Operations Manager,synthetic://prospects/045,2026-10-20
+p046,Person 046,person046@company046.test,Example Software 046,company046.test,software,66,GB,Investor,synthetic://prospects/046,2026-10-20
+p047,Person 047,person047@company047.test,Example Software 047,company047.test,software,67,US,Head of Revenue,synthetic://prospects/047,2024-01-01
+p048,Person 048,person048@company048.test,Example Software 048,company048.test,software,68,GB,Operations Manager,synthetic://prospects/048,2026-10-20
+p049,Person 049,,Example Software 049,company049.test,software,69,US,Head of Revenue,synthetic://prospects/049,2026-10-20
+p050,Person 050,person050@company050.test,Example Software 050,company050.test,software,70,GB,Head of Revenue,synthetic://prospects/050,2026-10-20
+p051,Person 051,person051@company051.test,Example Software 051,company051.test,software,71,US,Operations Manager,synthetic://prospects/051,2026-10-20
+p052,Person 052,person052@company052.test,Example Software 052,company052.test,software,,GB,Head of Revenue,synthetic://prospects/052,2026-10-20
+p053,Person 053,person053@company053.test,Example Software 053,company053.test,software,400,US,Head of Revenue,synthetic://prospects/053,2026-10-20
+p054,Person 054,person054@company054.test,Example Software 054,company054.test,software,74,,Operations Manager,synthetic://prospects/054,2026-10-20
+p055,Person 055,person055@company055.test,Example Software 055,company055.test,software,75,IN,Head of Revenue,synthetic://prospects/055,2026-10-20
+p056,Person 056,person056@company056.test,Example Software 056,company056.test,software,76,GB,Investor,synthetic://prospects/056,2026-10-20
+p057,Person 057,person057@company057.test,Example Software 057,company057.test,software,77,US,Operations Manager,synthetic://prospects/057,2024-01-01
+p058,Person 058,person058@company058.test,Example Software 058,company058.test,software,78,GB,Head of Revenue,synthetic://prospects/058,2026-10-20
+p059,Person 059,invalid-address,Example Software 059,company059.test,software,79,US,Head of Revenue,synthetic://prospects/059,2026-10-20
+p060,Person 060,person060@company060.test,Example Software 060,company060.test,software,80,GB,Operations Manager,synthetic://prospects/060,2026-10-20
+p061,Person 061,person061@company061.test,Example Software 061,company061.test,software,81,US,Head of Revenue,synthetic://prospects/061,2026-10-20
+p062,Person 062,person062@company062.test,Example Software 062,company062.test,software,,GB,Head of Revenue,synthetic://prospects/062,2026-10-20
+p063,Person 063,person063@company063.test,Example Software 063,company063.test,software,400,US,Operations Manager,synthetic://prospects/063,2026-10-20
+p064,Person 064,person064@company064.test,Example Software 064,company064.test,software,84,,Head of Revenue,synthetic://prospects/064,2026-10-20
+p065,Person 065,person065@company065.test,Example Software 065,company065.test,software,85,IN,Head of Revenue,synthetic://prospects/065,2026-10-20
+p066,Person 066,person066@company066.test,Example Software 066,company066.test,software,86,GB,Investor,synthetic://prospects/066,2026-10-20
+p067,Person 067,person067@company067.test,Example Software 067,company067.test,software,87,US,Head of Revenue,synthetic://prospects/067,2024-01-01
+p068,Person 068,person068@company068.test,Example Software 068,company068.test,software,88,GB,Head of Revenue,synthetic://prospects/068,2026-10-20
+p069,Person 069,,Example Software 069,company069.test,software,89,US,Operations Manager,synthetic://prospects/069,2026-10-20
+p070,Person 070,person070@company070.test,Example Software 070,company070.test,software,90,GB,Head of Revenue,synthetic://prospects/070,2026-10-20
+p071,Person 071,person071@company071.test,Example Software 071,company071.test,software,91,US,Head of Revenue,synthetic://prospects/071,2026-10-20
+p072,Person 072,person072@company072.test,Example Software 072,company072.test,software,,GB,Operations Manager,synthetic://prospects/072,2026-10-20
+p073,Person 073,person073@company073.test,Example Software 073,company073.test,software,400,US,Head of Revenue,synthetic://prospects/073,2026-10-20
+p074,Person 074,person074@company074.test,Example Software 074,company074.test,software,94,,Head of Revenue,synthetic://prospects/074,2026-10-20
+p075,Person 075,person075@company075.test,Example Software 075,company075.test,software,95,IN,Operations Manager,synthetic://prospects/075,2026-10-20
+p076,Person 076,person076@company076.test,Example Software 076,company076.test,software,96,GB,Investor,synthetic://prospects/076,2026-10-20
+p077,Person 077,person077@company077.test,Example Software 077,company077.test,software,97,US,Head of Revenue,synthetic://prospects/077,2024-01-01
+p078,Person 078,person078@company078.test,Example Software 078,company078.test,software,98,GB,Operations Manager,synthetic://prospects/078,2026-10-20
+p079,Person 079,invalid-address,Example Software 079,company079.test,software,99,US,Head of Revenue,synthetic://prospects/079,2026-10-20
+p080,Person 080,person080@company080.test,Example Software 080,company080.test,software,100,GB,Head of Revenue,synthetic://prospects/080,2026-10-20
+p081,Person 081,person081@company081.test,Example Software 081,company081.test,software,101,US,Operations Manager,synthetic://prospects/081,2026-10-20
+p082,Person 082,person082@company082.test,Example Software 082,company082.test,software,,GB,Head of Revenue,synthetic://prospects/082,2026-10-20
+p083,Person 083,person083@company083.test,Example Software 083,company083.test,software,400,US,Head of Revenue,synthetic://prospects/083,2026-10-20
+p084,Person 084,person084@company084.test,Example Software 084,company084.test,software,104,,Operations Manager,synthetic://prospects/084,2026-10-20
+p085,Person 085,person085@company085.test,Example Software 085,company085.test,software,105,IN,Head of Revenue,synthetic://prospects/085,2026-10-20
+p086,Person 086,person086@company086.test,Example Software 086,company086.test,software,106,GB,Investor,synthetic://prospects/086,2026-10-20
+p087,Person 087,person087@company087.test,Example Software 087,company087.test,software,107,US,Operations Manager,synthetic://prospects/087,2024-01-01
+p088,Person 088,person088@company088.test,Example Software 088,company088.test,software,108,GB,Head of Revenue,synthetic://prospects/088,2026-10-20
+p089,Person 089,,Example Software 089,company089.test,software,109,US,Head of Revenue,synthetic://prospects/089,2026-10-20
+p090,Person 090,person090@company090.test,Example Software 090,company090.test,software,110,GB,Operations Manager,synthetic://prospects/090,2026-10-20
+p001,Person 001,PERSON001@COMPANY001.TEST,Example Software 001,company001.test,software,21,US,Head of Revenue,synthetic://duplicate/001,2026-10-20
+p002,Person 002,PERSON002@COMPANY002.TEST,Example Software 002,company002.test,software,,GB,Head of Revenue,synthetic://duplicate/002,2026-10-20
+p003,Person 003,PERSON003@COMPANY003.TEST,Example Software 003,company003.test,software,400,US,Operations Manager,synthetic://duplicate/003,2026-10-20
+p004,Person 004,PERSON004@COMPANY004.TEST,Example Software 004,company004.test,software,24,,Head of Revenue,synthetic://duplicate/004,2026-10-20
+p005,Person 005,PERSON005@COMPANY005.TEST,Example Software 005,company005.test,software,25,IN,Head of Revenue,synthetic://duplicate/005,2026-10-20
+p006,Person 006,PERSON006@COMPANY006.TEST,Example Software 006,company006.test,software,26,GB,Investor,synthetic://duplicate/006,2026-10-20
+p007,Person 007,PERSON007@COMPANY007.TEST,Example Software 007,company007.test,software,27,US,Head of Revenue,synthetic://duplicate/007,2024-01-01
+p008,Person 008,PERSON008@COMPANY008.TEST,Conflicting company identity,company008.test,software,28,GB,Head of Revenue,synthetic://duplicate/008,2026-10-20
+p009,Person 009,,Example Software 009,company009.test,software,29,US,Operations Manager,synthetic://duplicate/009,2026-10-20
+p010,Person 010,PERSON010@COMPANY010.TEST,Example Software 010,company010.test,software,30,GB,Head of Revenue,synthetic://duplicate/010,2026-10-20

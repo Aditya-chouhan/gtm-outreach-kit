@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gtm-outreach-kit"
+version = "0.1.0"
+description = "Turn prospect exports into evidence-based, reviewable outreach packs."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "Aditya Chouhan"}]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9", "jsonschema>=4,<5", "build>=1,<2", "PyYAML>=6,<7"]
+
+[project.scripts]
+gtmkit = "gtm_outreach_kit.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["gtm_outreach_kit*"]
+
+[tool.setuptools.package-data]
+gtm_outreach_kit = ["assets/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+

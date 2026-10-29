@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "name": "Northstar Ops \u00b7 synthetic outbound pilot",
+  "offer": {
+    "summary": "We help software teams turn prospect exports into reviewable outreach drafts.",
+    "proof_points": []
+  },
+  "sender": {
+    "name": "Alex",
+    "company": "Northstar Ops (fictional)"
+  },
+  "required": [
+    {
+      "id": "software",
+      "field": "industry",
+      "op": "equals",
+      "value": "software"
+    },
+    {
+      "id": "company-size",
+      "field": "employees",
+      "op": "range",
+      "value": [
+        10,
+        200
+      ]
+    },
+    {
+      "id": "market",
+      "field": "country",
+      "op": "in",
+      "value": [
+        "US",
+        "GB"
+      ]
+    }
+  ],
+  "preferences": [
+    {
+      "id": "revenue-owner",
+      "field": "role",
+      "op": "in",
+      "value": [
+        "Head of Revenue",
+        "Founder"
+      ]
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "non-buyers",
+      "field": "role",
+      "op": "in",
+      "value": [
+        "Investor",
+        "Competitor"
+      ]
+    }
+  ],
+  "signal_types": [
+    "hiring",
+    "product_launch"
+  ],
+  "signal_max_age_days": 30,
+  "evidence_max_age_days": 365
+}

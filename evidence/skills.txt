@@ -1,0 +1,1 @@
+PASS: 6 skills; 6 self-contained reference links; valid discovery and UI metadata.

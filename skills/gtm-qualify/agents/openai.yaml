@@ -1,0 +1,4 @@
+interface:
+  display_name: "Qualify prospects"
+  short_description: "Qualify prospects with GTM Outreach Kit"
+  default_prompt: "Use $gtm-qualify to qualify prospects from my selected local inputs."

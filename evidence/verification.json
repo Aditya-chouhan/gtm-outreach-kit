@@ -1,0 +1,59 @@
+{
+  "checked_on": "2026-10-29",
+  "python": "3.12.14",
+  "local_tests": {
+    "passed": 67,
+    "failed": 0,
+    "receipt": "tests.txt"
+  },
+  "skills": {
+    "count": 6,
+    "package_checker": "passed",
+    "standard_skill_validator": "6 passed"
+  },
+  "examples": {
+    "schemas": "passed",
+    "offline_socket_block": "passed",
+    "receipt": "examples.txt"
+  },
+  "browser": {
+    "total": 90,
+    "qualified": 31,
+    "suppressed": 2,
+    "empty": true,
+    "expanded": 1,
+    "mobileOverflow": false,
+    "errors": [],
+    "externalRequests": []
+  },
+  "package": {
+    "wheel": "gtm_outreach_kit-0.1.0-py3-none-any.whl",
+    "outside_checkout": true,
+    "fresh_environment": true,
+    "commands": [
+      "version",
+      "help",
+      "init",
+      "validate",
+      "prepare",
+      "report",
+      "demo"
+    ],
+    "runtime_dependencies": 0,
+    "reproducible": true,
+    "summary": {
+      "input_rows": 100,
+      "unique_records": 90,
+      "duplicate_rows": 10,
+      "qualified": 31,
+      "review": 32,
+      "excluded": 27,
+      "suppressed": 2,
+      "drafts": 24
+    }
+  },
+  "source_content_sha256": "d60e6e8e62ad6b0a5ab75ed15eaf5f8c24d30e6cc1a0b64277347c0d38f63e92",
+  "remote_ci": "Configured; not run from this session",
+  "live_campaign_results": "None; synthetic demonstration only",
+  "model_behavior_evaluation": "Scenarios supplied; independent model evaluation not performed"
+}

@@ -1,0 +1,7 @@
+include LICENSE README.md CONTRIBUTING.md
+recursive-include docs *.md *.json *.png *.html
+recursive-include skills *.md *.yaml
+recursive-include scripts *.py *.cjs
+recursive-include tests *.py
+recursive-include evidence *.json *.txt
+include .github/workflows/ci.yml
