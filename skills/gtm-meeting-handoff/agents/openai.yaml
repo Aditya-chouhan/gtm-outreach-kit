@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prepare a meeting handoff"
+  short_description: "Prepare a meeting handoff with evidence"
+  default_prompt: "Use $gtm-meeting-handoff to prepare a meeting handoff from my available context."

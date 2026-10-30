@@ -1,0 +1,4 @@
+interface:
+  display_name: "Diagnose a GTM performance problem"
+  short_description: "Diagnose a GTM performance problem with evidence"
+  default_prompt: "Use $gtm-diagnose to diagnose a gtm performance problem from my available context."

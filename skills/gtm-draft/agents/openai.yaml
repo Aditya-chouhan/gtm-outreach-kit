@@ -1,4 +1,4 @@
 interface:
-  display_name: "Prepare outreach drafts"
-  short_description: "Prepare outreach drafts with GTM Outreach Kit"
-  default_prompt: "Use $gtm-draft to prepare outreach drafts from my selected local inputs."
+  display_name: "Write grounded outreach"
+  short_description: "Write grounded outreach with evidence"
+  default_prompt: "Use $gtm-draft to write grounded outreach from my available context."

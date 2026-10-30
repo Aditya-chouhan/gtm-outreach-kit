@@ -1,3 +1,11 @@
+# Case study: correcting a skills library scope
+
+**Author: Aditya Chouhan.** The initial release centered a deterministic outreach CLI with six supporting skills. The intended primary artifact was a reusable skills library. The October 30 revision makes 25 standalone skills the product, expands coverage beyond CSV outreach, and retains the working CLI as an optional helper.
+
+Each skill has a focused trigger, task-specific workflow, artifact template and review example. No skill requires the helper. Tool-dependent work must distinguish missing capabilities, proposals, drafts and verified execution. Packaging checks and installer tests validate distribution; independent model behavior and revenue outcomes remain unevaluated.
+
+The historical helper engineering notes follow. Their synthetic results demonstrate that helper only.
+
 # Engineering case study
 
 **Author: Aditya Chouhan.** This is an original portfolio project using synthetic data, not a client deployment.
@@ -8,7 +16,7 @@ A prospect spreadsheet can look plausible while hiding duplicate identities, mis
 
 ## Design
 
-The project separates business judgment from mechanics. The operator chooses the audience and supplies claims; the brief makes those decisions explicit. Python evaluates the brief, preserves contradictory observations, and exports receipts. Six agent skills help an assistant formulate and review this work without reimplementing calculations in conversation.
+The project separates business judgment from mechanics. The operator chooses the audience and supplies claims; the brief makes those decisions explicit. Python evaluates the brief, preserves contradictory observations, and exports receipts. The initial six helper-oriented skills supported this local processing workflow. The current library expands beyond that helper and removes its installation as a prerequisite.
 
 Three choices carry most of the design:
 

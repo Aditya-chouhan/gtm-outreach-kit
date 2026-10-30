@@ -1,0 +1,4 @@
+interface:
+  display_name: "Run a GTM operating review"
+  short_description: "Run a GTM operating review with evidence"
+  default_prompt: "Use $gtm-operating-review to run a gtm operating review from my available context."

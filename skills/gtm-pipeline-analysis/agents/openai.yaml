@@ -1,0 +1,4 @@
+interface:
+  display_name: "Analyze funnel and pipeline"
+  short_description: "Analyze funnel and pipeline with evidence"
+  default_prompt: "Use $gtm-pipeline-analysis to analyze funnel and pipeline from my available context."

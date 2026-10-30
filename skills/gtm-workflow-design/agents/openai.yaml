@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design a GTM automation workflow"
+  short_description: "Design a GTM automation workflow with evidence"
+  default_prompt: "Use $gtm-workflow-design to design a gtm automation workflow from my available context."

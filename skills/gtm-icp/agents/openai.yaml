@@ -1,0 +1,4 @@
+interface:
+  display_name: "Define an evidence-based ICP"
+  short_description: "Define an evidence-based ICP with evidence"
+  default_prompt: "Use $gtm-icp to define an evidence-based icp from my available context."

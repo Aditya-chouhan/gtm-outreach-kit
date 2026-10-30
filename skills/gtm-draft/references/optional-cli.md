@@ -1,3 +1,7 @@
+# Optional local CLI workflow
+
+Read only when the user explicitly chooses the local CSV helper. The CLI is not required for this skill and covers only a subset of its workflow.
+
 # Draft contracts
 
 The standalone renderer is deterministic and makes no model calls. Templates can use {{greeting}}, {{first_name}}, {{company}}, {{offer}}, {{proof}}, {{sender_name}}, {{sender_company}}. Unknown and malformed placeholders are refused. Values are substituted once and are never executed.

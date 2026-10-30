@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design actionable signal rules"
+  short_description: "Design actionable signal rules with evidence"
+  default_prompt: "Use $gtm-signal-design to design actionable signal rules from my available context."

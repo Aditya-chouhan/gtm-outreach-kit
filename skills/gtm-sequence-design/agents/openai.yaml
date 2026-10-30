@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design an outreach sequence"
+  short_description: "Design an outreach sequence with evidence"
+  default_prompt: "Use $gtm-sequence-design to design an outreach sequence from my available context."

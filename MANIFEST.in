@@ -5,3 +5,5 @@ recursive-include scripts *.py *.cjs
 recursive-include tests *.py
 recursive-include evidence *.json *.txt
 include .github/workflows/ci.yml
+
+include skills.json

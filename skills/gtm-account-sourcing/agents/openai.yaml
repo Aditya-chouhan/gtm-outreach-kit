@@ -1,0 +1,4 @@
+interface:
+  display_name: "Source a target-account list"
+  short_description: "Source a target-account list with evidence"
+  default_prompt: "Use $gtm-account-sourcing to source a target-account list from my available context."

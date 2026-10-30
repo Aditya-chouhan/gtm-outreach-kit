@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design and evaluate a GTM test"
+  short_description: "Design and evaluate a GTM test with evidence"
+  default_prompt: "Use $gtm-experiment to design and evaluate a gtm test from my available context."

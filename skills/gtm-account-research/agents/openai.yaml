@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research a target account"
+  short_description: "Research a target account with evidence"
+  default_prompt: "Use $gtm-account-research to research a target account from my available context."

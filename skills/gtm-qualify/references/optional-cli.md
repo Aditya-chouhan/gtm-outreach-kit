@@ -1,3 +1,7 @@
+# Optional local CLI workflow
+
+Read only when the user explicitly chooses the local CSV helper. The CLI is not required for this skill and covers only a subset of its workflow.
+
 # Qualification behavior
 
 ```bash

@@ -1,4 +1,4 @@
 interface:
-  display_name: "Qualify prospects"
-  short_description: "Qualify prospects with GTM Outreach Kit"
-  default_prompt: "Use $gtm-qualify to qualify prospects from my selected local inputs."
+  display_name: "Qualify accounts and buyers"
+  short_description: "Qualify accounts and buyers with evidence"
+  default_prompt: "Use $gtm-qualify to qualify accounts and buyers from my available context."

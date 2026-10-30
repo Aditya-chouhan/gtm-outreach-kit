@@ -1,0 +1,4 @@
+interface:
+  display_name: "Triage sales conversations"
+  short_description: "Triage sales conversations with evidence"
+  default_prompt: "Use $gtm-reply-triage to triage sales conversations from my available context."

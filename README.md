@@ -1,106 +1,83 @@
-# GTM Outreach Kit
+# GTM Outreach Kit — Agent Skills
 
-**Turn a prospect export into an outreach pack you can inspect.**
+**25 standalone GTM skills for the AI agent and tools you already use.**
 
-Original software and agent skills by **Aditya Chouhan**. Local Python CLI · six focused skills · zero runtime dependencies · no API keys.
+Created by **Aditya Chouhan**. Strategy, account research, prospecting, qualification, outreach, CRM hygiene, content and experimentation—with concrete workflows, evidence requirements, artifact templates and review examples.
 
-![Actual synthetic demonstration report](docs/demo-report.png)
+The skills are the product. Each folder contains instructions an agent can load for a specific task. Use them with supplied documents, local files, connected services or browser access. **The skills do not require Python, this project's CLI, an OXYGEN account, or a particular data vendor.** Live research and execution still require appropriate tool access; instruction files do not create integrations.
 
-[Open or download the complete synthetic report](docs/demo-report.html).
+[Browse all 25 skills](docs/skill-catalog.md) · [Installation](docs/installation.md) · [Example requests](docs/start-here.md) · [Evaluation scenarios](docs/skill-scenarios.md)
 
-GTM tools often tell you who to contact without making the underlying decisions easy to audit. This kit makes those decisions explicit: which rows were merged, which criteria passed, which facts are missing, why a prospect ranks higher, and why a draft was withheld.
+## Start with one useful skill
 
-```text
-Prospect CSV + business brief + optional signals and suppressions
-                         ↓
-Normalize → resolve duplicates → evaluate evidence → qualify → rank
-                         ↓
-           Draft packs + CSV exports + HTML review report
-```
+1. Choose a task from the catalog below.
+2. Copy its entire folder from `skills/` into your agent's documented skill directory. Keep `SKILL.md`, `references/` and `agents/` together.
+3. Invoke it explicitly, or let your host select it when supported. Example:
 
-## Run it in two minutes
+> Use `$gtm-account-research` to research this company's fit for our offer. Use accessible sources, separate facts from hypotheses, and give me a dated account brief. Do not enrich contacts or send anything.
 
-Python 3.11 or newer; Git is only needed to clone. From this repository:
+No CLI installation is needed. If your host supports custom instructions rather than skill-folder discovery, supply the selected `SKILL.md` and its linked reference. Host discovery and automatic invocation differ; universal compatibility is not claimed.
+
+## The library
+
+| Job | Skills |
+| --- | --- |
+| Understand the business | [Brief](skills/gtm-brief/SKILL.md), [ICP](skills/gtm-icp/SKILL.md), [Positioning](skills/gtm-positioning/SKILL.md), [Diagnosis](skills/gtm-diagnose/SKILL.md) |
+| Find and understand buyers | [Account sourcing](skills/gtm-account-sourcing/SKILL.md), [Account research](skills/gtm-account-research/SKILL.md), [Buying-group mapping](skills/gtm-buyer-map/SKILL.md), [Enrichment planning](skills/gtm-enrichment-plan/SKILL.md) |
+| Prepare prospect data | [Data inspection](skills/gtm-data-inspect/SKILL.md), [Qualification](skills/gtm-qualify/SKILL.md), [Prioritization](skills/gtm-prioritize/SKILL.md), [Signal design](skills/gtm-signal-design/SKILL.md) |
+| Prepare and handle outreach | [Drafting](skills/gtm-draft/SKILL.md), [Sequence design](skills/gtm-sequence-design/SKILL.md), [Readiness review](skills/gtm-review/SKILL.md), [Reply triage](skills/gtm-reply-triage/SKILL.md), [Meeting handoff](skills/gtm-meeting-handoff/SKILL.md) |
+| Maintain the operation | [CRM hygiene](skills/gtm-crm-hygiene/SKILL.md), [Delivery investigation](skills/gtm-deliverability/SKILL.md), [Workflow design](skills/gtm-workflow-design/SKILL.md), [Operating review](skills/gtm-operating-review/SKILL.md) |
+| Learn and communicate | [Pipeline analysis](skills/gtm-pipeline-analysis/SKILL.md), [Experiments](skills/gtm-experiment/SKILL.md), [LinkedIn content](skills/gtm-linkedin-content/SKILL.md), [Content repurposing](skills/gtm-content-repurpose/SKILL.md) |
+
+## What each skill provides
+
+- A specific trigger and boundaries so the agent selects the right workflow.
+- Task-specific decisions and evidence checks, including how to work with unknowns and conflicting inputs.
+- A concrete working template and a realistic review example in its own folder.
+- Clear separation between analysis, proposed actions, drafts and verified execution.
+- A fallback deliverable when a required source or tool is unavailable.
+
+Use the narrowest skill that answers the request. The catalog is not an automatic campaign, and installing every skill does not authorize every workflow.
+
+## Optional folder installer
+
+Manual copying works without Python. If Python 3.11+ is available, this standard-library script can preview and copy selected folders:
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install .
-gtmkit demo --out demo-output
+python3 scripts/install_skills.py --list
+python3 scripts/install_skills.py --skills gtm-icp gtm-account-research \
+  --target /path/to/your/agent/skills --dry-run
+python3 scripts/install_skills.py --skills gtm-icp gtm-account-research \
+  --target /path/to/your/agent/skills
 ```
 
-Open `demo-output/results/report.html` in your browser. The workflow itself runs offline. Installation may download build tools; no model, provider account, or API key is used by the workflow.
+Replace the target with your host's documented path. The installer copies local files only, refuses existing skill destinations and does not change agent configuration, credentials or permissions. See [installation](docs/installation.md).
 
-The committed demo is **100 synthetic source rows**, including 10 duplicates. Its fixed evaluation date is October 29, 2026. Names, companies, signals, and suppression entries are fictional. The demo produces 90 unique records: 31 qualified, 32 needing review, 27 excluded, and 24 draft packs. These numbers demonstrate rule execution; they are not campaign results.
+## Optional local outreach helper
 
-## Use your own data
+The repository also retains a Python CLI for a narrower deterministic CSV workflow:
 
-```bash
-gtmkit init --out workspace
-# Replace the synthetic CSVs and edit workspace/brief.json.
-gtmkit validate --input workspace/prospects.csv --brief workspace/brief.json
-gtmkit prepare --input workspace/prospects.csv --brief workspace/brief.json \
-  --signals workspace/signals.csv --suppressions workspace/suppressions.csv \
-  --as-of 2026-10-29 --out results
-gtmkit report --run results/run.json --out another-report.html
-```
+**Prospect CSV → normalization → qualification → ranking → draft emails → HTML report.**
 
-Every output destination must be new. A run never overwrites an existing output directory. `validate` checks structure and row syntax; `prepare` evaluates evidence, qualification, and eligibility. Omit `--signals` or `--suppressions` if unavailable; the report discloses the missing coverage. Use a suitable evaluation date for your own data.
+It is useful for repeatable data processing and does not implement the whole skills library. Six skills include a separately linked optional CLI reference. The other skills work without it as well.
 
-| Output | What you can inspect |
-| --- | --- |
-| `run.json` | Original rows, normalized fields, conflicts, per-rule evidence, signals, rankings, blockers, configuration, and input hashes |
-| `qualified.csv`, `review.csv`, `excluded.csv` | Portable prospect lists with disposition and contact status |
-| `drafts.json` | First-email and follow-up drafts with supplied claim references |
-| `report.html` | Searchable, filterable report with evidence and exact draft previews |
+[Run the optional helper](docs/optional-cli.md) · [Inspect the synthetic report](docs/demo-report.html) · [Input contract](docs/input-contract.md)
 
-See [input contract](docs/input-contract.md), [architecture](docs/architecture.md), and [engineering case study](docs/case-study.md).
-
-## Decisions with receipts
-
-- **Evidence before fit:** each criterion names its source rows and supplied observation dates. Missing, stale, or conflicting required evidence goes to review.
-- **Explicit exclusions:** supported exclusions override positive criteria. Unknown exclusion evidence also needs review.
-- **Identity before merging:** contacts join by normalized email or explicit contact ID. Different people at one company remain separate. Conflicting merged values remain visible.
-- **Fit and contact eligibility stay distinct:** suppressions block drafts. Missing or malformed emails cannot receive drafts. Valid syntax never claims a mailbox is verified.
-- **Rankings explain themselves:** configured preferences come first, then relevant fresh signals, then latest signal date, then stable source-row ID. This is an ordering rule, not a conversion prediction.
-- **Grounded draft rendering:** templates use supplied prospect fields and offer details. No invented case study, research, or performance proof. Rendering requires no LLM.
-- **Reproducible runs:** fixed inputs, configuration, engine version, and evaluation date produce the same substantive output. No hidden clock, telemetry, or external assets.
-
-## Agent skills
-
-Six independently written skills help an existing assistant operate the toolkit:
-
-| Skill | Job |
-| --- | --- |
-| [gtm-brief](skills/gtm-brief/SKILL.md) | Turn supplied context into an explicit qualification brief |
-| [gtm-data-inspect](skills/gtm-data-inspect/SKILL.md) | Inspect mappings, invalid values, duplicate identities, and source coverage |
-| [gtm-qualify](skills/gtm-qualify/SKILL.md) | Configure criteria and explain engine results |
-| [gtm-prioritize](skills/gtm-prioritize/SKILL.md) | Review preference ordering and dated signals |
-| [gtm-draft](skills/gtm-draft/SKILL.md) | Prepare drafts using supplied claims and review rendered wording |
-| [gtm-review](skills/gtm-review/SKILL.md) | Inspect the complete pack and unresolved decisions |
-
-Each folder is self-contained and uses the `SKILL.md` format with local supporting references. Copy the selected folder into your agent's documented skill directory, retaining its references. The CLI must be installed in that agent's terminal environment. UI metadata is provided in `agents/openai.yaml`; installation and model routing depend on the host. No automatic discovery across every agent is claimed.
-
-The assistant may improve wording in conversation; the CLI does not call a model. Skill instructions cannot force a model to obey them. [Behavioral scenarios](docs/skill-scenarios.md) distinguish executable guarantees from assistant review expectations.
-
-## Development and checks
+## Validation and limits
 
 ```bash
 python -m pip install -e '.[dev]'
 python -m pytest -q
 python scripts/check_skills.py
 python scripts/check_examples.py
-python -m build
 ```
 
-CI runs the tests on Python 3.11–3.13, validates example documents against the published schemas, checks skill references, and installs the built wheel in a clean environment before running the documented commands. Local verification receipts are in [evidence](evidence/verification.json); a configured workflow is not a claim that remote CI has run.
+Library checks validate the 25-folder manifest, discovery metadata, self-contained references and optional installation behavior. Tests also cover the existing CLI. These checks do **not** establish that every model follows the instructions or that the skills improve revenue. [Behavioral scenarios](docs/skill-scenarios.md) are provided for independent evaluation; no independent model evaluation is claimed.
 
-## Boundaries
+The library contains no bundled paid-provider integration, autonomous sending engine or universal account connector. Use the agent's actual connected capabilities and the user's task scope. Found contact information, a draft or a diagram does not prove permission, delivery or a deployed integration.
 
-V1 consumes local CSV/JSON data. It does not discover companies, enrich contacts, verify mailboxes, send messages, schedule campaigns, publish content, or mutate a CRM. It does not independently verify source URLs or claims supplied in the brief. HTML includes local JavaScript for filters and no remote assets. Exported CSV formula-looking cells are prefixed with an apostrophe; JSON retains original values. Output artifacts can contain personal data supplied by the operator: keep real runs out of public commits.
+[Library verification](evidence/skills-revision.json) · [Historical CLI verification](evidence/verification.json) · [Architecture](docs/architecture.md)
 
-## Inspiration and authorship
+## Authorship and inspiration
 
-The public [OXYGEN GTM skills repository](https://github.com/OXYGEN-CRO/gtm-skills) prompted this project's focus on making agent-guided GTM work inspectable. GTM Outreach Kit is an independent implementation with original code, skill instructions, fixtures, templates, and documentation. OXYGEN's hosted product was not reproduced or benchmarked. This project is unaffiliated with OXYGEN.
-
-Copyright © 2026 Aditya Chouhan. [MIT License](LICENSE).
+Original code, skill instructions, examples and templates by **Aditya Chouhan**, under the [MIT License](LICENSE). The public [OXYGEN GTM skills repository](https://github.com/OXYGEN-CRO/gtm-skills) inspired the broad problem area. This is an independent, tool-neutral implementation; it copies none of OXYGEN's skill text, code or assets and is unaffiliated with OXYGEN.

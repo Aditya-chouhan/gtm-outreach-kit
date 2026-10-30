@@ -1,3 +1,7 @@
+# Optional local CLI workflow
+
+Read only when the user explicitly chooses the local CSV helper. The CLI is not required for this skill and covers only a subset of its workflow.
+
 # Inspection mechanics
 
 CSV: UTF-8, optionally a BOM, comma-separated, with unique trimmed headers and a consistent number of fields. The canonical columns are contact_id, first_name, email, company, domain, industry, employees, country, role, source_ref, observed_at. Additional columns are preserved in raw records. Map nonstandard headers in the brief using `column_map`.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan and audit enrichment"
+  short_description: "Plan and audit enrichment with evidence"
+  default_prompt: "Use $gtm-enrichment-plan to plan and audit enrichment from my available context."

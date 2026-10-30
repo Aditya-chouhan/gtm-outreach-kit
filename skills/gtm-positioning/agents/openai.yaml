@@ -1,0 +1,4 @@
+interface:
+  display_name: "Develop positioning and offer messaging"
+  short_description: "Develop positioning and offer messaging with evidence"
+  default_prompt: "Use $gtm-positioning to develop positioning and offer messaging from my available context."

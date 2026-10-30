@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "gtm-outreach-kit"
 version = "0.1.0"
-description = "Turn prospect exports into evidence-based, reviewable outreach packs."
+description = "Optional local outreach helper accompanying 25 standalone GTM agent skills."
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"

@@ -1,37 +1,46 @@
-"""Check package discovery metadata and self-contained skill references."""
+"""Validate manifest, metadata and self-contained references, not model behavior."""
 import json
 import re
-import yaml
 from pathlib import Path
+import yaml
 
-ROOT=Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[1]
 
-def main():
-    folders=sorted((ROOT/'skills').iterdir())
-    assert len(folders)==6, 'Expected six focused skills'
-    count=0
-    for folder in folders:
-        skill=(folder/'SKILL.md').read_text()
+
+def check(root=ROOT):
+    manifest = json.loads((root / 'skills.json').read_text())
+    entries = manifest['skills']
+    names = [s['name'] for s in entries]
+    assert len(names) == 25 and len(set(names)) == 25, 'Expected 25 distinct skills'
+    folders = {p.name for p in (root / 'skills').iterdir() if p.is_dir()}
+    assert folders == set(names), 'Manifest and folders differ'
+    links = 0
+    for entry in entries:
+        name = entry['name']
+        assert entry['path'] == 'skills/' + name
+        assert entry['required_tools'] == [] and entry['cli_required'] is False
+        folder = root / entry['path']
+        skill = (folder / 'SKILL.md').read_text()
         assert skill.startswith('---\n')
-        parsed=yaml.safe_load(skill.split('---',2)[1])
-        assert parsed['name']==folder.name and isinstance(parsed['description'],str)
-        front=skill.split('---',2)[1]
-        assert re.search(r'^name: '+re.escape(folder.name)+r'$',front,re.M)
-        description=re.search(r'^description: (.+)$',front,re.M)
-        assert description and len(json.loads(description[1]))>30
-        metadata=(folder/'agents'/'openai.yaml').read_text()
-        assert isinstance(yaml.safe_load(metadata)['interface'],dict)
-        fields=dict(re.findall(r'^  ([a-z_]+): (.+)$',metadata,re.M))
-        assert 25<=len(json.loads(fields['short_description']))<=64
-        assert '$'+folder.name in json.loads(fields['default_prompt'])
-        for md in folder.rglob('*.md'):
-            for target in re.findall(r'\[[^\]]*\]\(([^)]+)\)',md.read_text()):
+        front = yaml.safe_load(skill.split('---', 2)[1])
+        assert front['name'] == name and front['description'] == entry['description']
+        assert re.fullmatch(r'[a-z][a-z0-9-]{0,63}', name)
+        ui = yaml.safe_load((folder / 'agents/openai.yaml').read_text())['interface']
+        assert 25 <= len(ui['short_description']) <= 64
+        assert '$' + name in ui['default_prompt']
+        assert (folder / 'references/worked-example.md').is_file()
+        for path in folder.rglob('*'):
+            assert not path.is_symlink(), 'Symlinked bundle member'
+            if not path.is_file() or path.suffix != '.md':
+                continue
+            for target in re.findall(r'\[[^\]]*\]\(([^)]+)\)', path.read_text()):
                 if '://' in target:
                     continue
-                resolved=(md.parent/target.split('#',1)[0]).resolve()
-                assert folder.resolve() in resolved.parents and resolved.is_file(), f'Broken or external dependency: {target}'
-                count+=1
-    print(f'PASS: {len(folders)} skills; {count} self-contained reference links; valid discovery and UI metadata.')
+                resolved = (path.parent / target.split('#', 1)[0]).resolve()
+                assert folder.resolve() in resolved.parents and resolved.is_file(), f'Broken/cross-bundle reference: {path}: {target}'
+                links += 1
+    return {'skills': len(names), 'self_contained_reference_links': links, 'manifest': 'passed', 'discovery_metadata': 'passed', 'requires_cli': False, 'behavioral_evaluation': 'Not established by structural checks'}
 
-if __name__=='__main__':
-    main()
+
+if __name__ == '__main__':
+    print(json.dumps(check(), indent=2))

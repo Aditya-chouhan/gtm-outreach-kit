@@ -1,0 +1,4 @@
+interface:
+  display_name: "Map a buying group"
+  short_description: "Map a buying group with evidence"
+  default_prompt: "Use $gtm-buyer-map to map a buying group from my available context."

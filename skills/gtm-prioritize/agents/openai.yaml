@@ -1,4 +1,4 @@
 interface:
-  display_name: "Prioritize qualified prospects"
-  short_description: "Prioritize qualified prospects with GTM Outreach Kit"
-  default_prompt: "Use $gtm-prioritize to prioritize qualified prospects from my selected local inputs."
+  display_name: "Prioritize a prospect queue"
+  short_description: "Prioritize a prospect queue with evidence"
+  default_prompt: "Use $gtm-prioritize to prioritize a prospect queue from my available context."

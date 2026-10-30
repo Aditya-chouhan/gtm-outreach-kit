@@ -1,0 +1,4 @@
+interface:
+  display_name: "Audit CRM data and repairs"
+  short_description: "Audit CRM data and repairs with evidence"
+  default_prompt: "Use $gtm-crm-hygiene to audit crm data and repairs from my available context."

@@ -1,3 +1,7 @@
+# Optional local CLI workflow
+
+Read only when the user explicitly chooses the local CSV helper. The CLI is not required for this skill and covers only a subset of its workflow.
+
 # Brief contract
 
 A brief is a UTF-8 JSON object with `schema_version: "1.0"`, a name, and a nonempty `required` list. Optional lists are `preferences` and `exclusions`. Each rule contains exactly `id`, `field`, `op`, and `value`; IDs are unique lowercase slugs.

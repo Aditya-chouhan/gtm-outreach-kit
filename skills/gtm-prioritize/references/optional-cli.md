@@ -1,3 +1,7 @@
+# Optional local CLI workflow
+
+Read only when the user explicitly chooses the local CSV helper. The CLI is not required for this skill and covers only a subset of its workflow.
+
 # Priority mechanics
 
 Within qualified records: more matched preferences first; then more eligible fresh signals; then the latest eligible signal date; then source-row ID. Ranking is deterministic for the same input ordering, configuration, and date. It is not invariant to reordering the input CSV because row ID is the final tie-breaker.

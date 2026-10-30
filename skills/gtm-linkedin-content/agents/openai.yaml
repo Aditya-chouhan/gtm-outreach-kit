@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan and write LinkedIn content"
+  short_description: "Plan and write LinkedIn content with evidence"
+  default_prompt: "Use $gtm-linkedin-content to plan and write linkedin content from my available context."

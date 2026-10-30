@@ -1,0 +1,4 @@
+interface:
+  display_name: "Investigate email delivery"
+  short_description: "Investigate email delivery with evidence"
+  default_prompt: "Use $gtm-deliverability to investigate email delivery from my available context."

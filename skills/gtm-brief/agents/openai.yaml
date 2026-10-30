@@ -1,4 +1,4 @@
 interface:
-  display_name: "Define a GTM brief"
-  short_description: "Define a GTM brief with GTM Outreach Kit"
-  default_prompt: "Use $gtm-brief to define a gtm brief from my selected local inputs."
+  display_name: "Build a GTM brief"
+  short_description: "Build a GTM brief with evidence"
+  default_prompt: "Use $gtm-brief to build a gtm brief from my available context."

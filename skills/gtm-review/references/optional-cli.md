@@ -1,3 +1,7 @@
+# Optional local CLI workflow
+
+Read only when the user explicitly chooses the local CSV helper. The CLI is not required for this skill and covers only a subset of its workflow.
+
 # Pack review
 
 A complete run directory contains run.json, drafts.json, qualified.csv, review.csv, excluded.csv, and report.html. The HTML report works offline and exposes evidence and raw rows under expandable sections. Filters change presentation only.

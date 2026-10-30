@@ -1,3 +1,11 @@
+# Skills library and optional helper
+
+The main artifact is `skills/`: 25 standalone task instructions with their own templates, examples and UI metadata. `skills.json` is the catalog and packaging source of truth. The optional folder installer copies chosen bundles into an explicit target; it does not install the Python helper or connect tools.
+
+Skills operate through whatever capabilities the host actually has. They guide judgment, evidence use and artifact creation, but do not themselves execute integrations or enforce behavior. Each folder is self-contained.
+
+The remainder of this document describes the existing optional CSV helper. Its execution guarantees apply only when that helper is selected.
+
 # Architecture
 
 ```mermaid
@@ -20,7 +28,7 @@ flowchart LR
 - `report.py` exports a saved run into portable artifacts. HTML escapes imported data; the browser changes presentation only. Original values remain inspectable. Output is staged and the destination is reserved exclusively before rename.
 - `cli.py` wires the public commands and handles input/filesystem errors. No command sends messages or starts a provider job.
 - `assets/` contains the report shell and the original synthetic fixture. These assets ship inside the wheel, so the demo runs outside the source checkout.
-- `skills/` provides six self-contained instruction folders. Agents help formulate the brief and interpret outputs; all mechanical decisions come from the engine.
+- `skills/` provides 25 self-contained workflows; six retain optional references for this helper. The helper owns its mechanical calculations, while broader skills can use other available tools.
 
 The runtime uses only the Python standard library. Schema validation and test/build tools are development dependencies. There is no HTTP client, telemetry, model SDK, daemon, secret store, account system, or remote database.
 

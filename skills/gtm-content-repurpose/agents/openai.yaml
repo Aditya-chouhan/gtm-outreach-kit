@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repurpose supported content"
+  short_description: "Repurpose supported content with evidence"
+  default_prompt: "Use $gtm-content-repurpose to repurpose supported content from my available context."
