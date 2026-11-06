@@ -77,7 +77,3 @@ Library checks validate the 25-folder manifest, discovery metadata, self-contain
 The library contains no bundled paid-provider integration, autonomous sending engine or universal account connector. Use the agent's actual connected capabilities and the user's task scope. Found contact information, a draft or a diagram does not prove permission, delivery or a deployed integration.
 
 [Library verification](evidence/skills-revision.json) · [Historical CLI verification](evidence/verification.json) · [Architecture](docs/architecture.md)
-
-## Authorship and inspiration
-
-Original code, skill instructions, examples and templates by **Aditya Chouhan**, under the [MIT License](LICENSE). The public [OXYGEN GTM skills repository](https://github.com/OXYGEN-CRO/gtm-skills) inspired the broad problem area. This is an independent, tool-neutral implementation; it copies none of OXYGEN's skill text, code or assets and is unaffiliated with OXYGEN.
